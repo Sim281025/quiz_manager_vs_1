@@ -1,0 +1,60 @@
+{
+    "quizzes": [
+        {
+            "quizId": "4321", 
+            "questionTitle": "General Knowledge quiz",
+            "questions": [
+                {
+                    "questionId":"1234",
+                    "questionText": "Who is MJ?",
+                    "answerOptions": [
+                        { "answerText1": "Whodini", "isCorrect": "false"},
+                        { "answerText1": "Michael Jackson", "isCorrect": "true"},
+                        { "answerText1": "Peter Pan", "isCorrect": "false"},
+                        { "answerText1": "Nobody", "isCorrect": "false"}
+                    ]
+                },
+                {
+                    "questonId": "9887",
+                    "questionText": "What comes next: 'rock', 'paper' .....?",
+                    "options": [
+                        "scissors",
+                        "cars",
+                        "climb",
+                        "sing"
+                    ],
+                    "correctAnswer": "scissors"
+                }
+            ]
+        },
+        {
+            "quizId": "1222",
+            "questionTitle": "Car quiz",
+            "questions": [
+                {
+                    "questionId":"7777",
+                    "questionText": "What brand car is a KA",
+                    "options": [
+                        "Ford",
+                        "Mercedes",
+                        "Audi",
+                        "Nissan"
+                    ],
+                    "correctAnswer": "Ford"
+                },
+                {
+                    "questonId": "3333",
+                    "questionText": "What car did Henry Ford make?",
+                    "options": [
+                        "Ford",
+                        "Fiesta",
+                        "Toyota",
+                        "Lexxus"
+                    ],
+                    "correctAnswer": "Ford"
+                }
+            ]
+
+        }
+    ]
+}

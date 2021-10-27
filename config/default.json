@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://assessor123:assessor123@quizmanager.alz65.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "jwtSecret": "secret"
+}

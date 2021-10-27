@@ -1,13 +1,13 @@
 ## QUIZ MANAGER
 
-**Overview-** Full stack MERN Quiz manager application with React hooks, context, Role authorisation & JWT authentication.
+**Overview-** MERN stack Quiz manager application with React hooks, context, Role authorisation & JWT authentication.
 
 <br />
 <br />
 
 **BUSINESS REQUIREMENTS -**
 
-APP NAME - Eduction Skools Ltd
+APP NAME - WSkools Ltd
 
 Description - Company that provides online education solutions for education establishments and training providers.
 
@@ -21,6 +21,9 @@ Basic User-will only be able to view questions
 
  <br />
 <br />
+
+**PRE REQUISITE**
+Use the link to install Node and NPM and follow the instructions: [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
 
 **INSTALLATION INSTRUCTIONS**
 
@@ -52,7 +55,7 @@ Please look inside the Assessor guide for the MongoDB username and password so t
 **RUN SERVER**
 <br>
 Express & React localhost:3000 & localhost:5000 <br>
-` npm run dev `
+`npm run dev`
 
 Express API Only localhost:5000
 

@@ -1,0 +1,36 @@
+{
+  "name": "quiz_manager_vs_1",
+  "version": "1.0.0",
+  "description": "**Overview-** Full stack MERN Quiz manager application with React hooks, context, Role authorisation & JWT authentication.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sim281025/quiz_manager_vs_1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sim281025/quiz_manager_vs_1/issues"
+  },
+  "homepage": "https://github.com/Sim281025/quiz_manager_vs_1#readme",
+  "dependencies": {
+    "axios": "^0.23.0",
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^6.3.0",
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "express-validator": "^6.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.11",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
