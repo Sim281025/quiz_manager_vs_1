@@ -14,12 +14,16 @@ const UserSchema = mongoose.Schema ({
         type: String,
         required: true
     },
-    date: {
+    createdAt: {
         type: Date,
         required:true,
         default: Date.now
     }, 
-    updated: Date,
+    updatedAt: {
+        type: Date,
+        required:true,
+        default: Date.now
+    }, 
     role: {
         type: String,
         required: true,

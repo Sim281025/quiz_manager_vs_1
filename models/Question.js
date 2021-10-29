@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const QuestionSchema = mongoose.Schema ({
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
-    },
-    quiz: {
+    // userId: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'users'
+    // },
+    quizId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'quizzes'
     },
@@ -13,31 +13,24 @@ const QuestionSchema = mongoose.Schema ({
         type: String,
         required: true
     },
-    answerText1: {
+    answerOptions: [{
         type: String,
-        required: true,
-    },
-    answerText2: {
-        type: String,
-        required: true,
-    },
-    answerText3: {
-        type: String,
-        required: true,
-    },
-    answerText4: {
-        type: String,
-        required: true,
-    },
+        required: true  
+    }],
     correctAnswer: {
         type: String,
         required: true
     },
-    date: {
+    createdAt: {
         type: Date,
         required:true,
         default: Date.now
-    }
+    }, 
+    updatedAt: {
+        type: Date,
+        required:true,
+        default: Date.now
+    }, 
 });
 
 module.exports = mongoose.model('question', QuestionSchema);

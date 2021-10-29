@@ -25,8 +25,8 @@ const authRole = (role) => {
         //  const userRole = req.body.role
         //  if (!role.includes(userRole)) {
          if (req.user.role !== role) {
-         
-    //return res.status(401).json({ msg: 'You are not authorised to have access to this page' })
+         console.log(req.user)
+    return res.status(401).json({ msg: 'You are not authorised to have access to this page' })
          }
 
          next()

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const QuizSchema = mongoose.Schema ({
-    user: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users'
     },
@@ -9,11 +9,16 @@ const QuizSchema = mongoose.Schema ({
         type: String,
         required: true
     },
-    date: {
+    createdAt: {
         type: Date,
         required:true,
         default: Date.now
-    }
+    }, 
+    updatedAt: {
+        type: Date,
+        required:true,
+        default: Date.now
+    }, 
     //How do you include update date and timestamp in schema or MongoDB?
 });
 
