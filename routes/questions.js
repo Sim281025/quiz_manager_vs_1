@@ -3,6 +3,8 @@ const router = express.Router();
 const { auth, authRole } = require("../middleware/middleware");
 const Question = require("../models/Question"); // imported models/Quiz.js
 const Quiz = require("../models/Quiz"); // imported models/Quiz.js
+const User = require("../models/User"); // imported models/User.js
+
 const { check, validationResult } = require("express-validator");
 
 //FOR - CRUD statements dependent on auth and role of user
@@ -17,13 +19,22 @@ const { check, validationResult } = require("express-validator");
 router.get("/:quizId", auth, async (req, res) => {
   //res.send('Questions Only');
   try {
-    //const quizzes = await Quizzes.find({ userId: req.user.id }).sort({ date: -1 }); //finds the user objectID from db and sorts the array into date order of most recent first
-    const questions = await Question.find({
-      //quizId: _id instanceof mongoose.Types.ObjectId,
-      //quiz: req.quiz.id,
-      //quiz: ObjectId(id),
-      quiz: { $in: quizzes },
-    });
+    //const question = await Question.findById(req.quiz.id); //cannot read property 'id' undefined
+
+    // const { quizId, questionText, answerOptions, correctAnswer } = req.body;
+    // let question = await question.findOne({ quizId });
+    // question = new Question({
+    //   quizId,
+    //   questionText,
+    //   answerOption,
+    //   correctAnswer,
+    // });                                  //cannot access 'question' before initialisation
+
+    // const questions = await Question.find({
+    //     quizId: ObjectId,
+    //   });        //objectId is not defined
+
+    const questions = await Question.find({}); // returns an empty array of all questions but they are not linked to the a quizId?
     res.json(questions);
   } catch (err) {
     console.error(err.message);
