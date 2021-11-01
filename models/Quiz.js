@@ -8,18 +8,7 @@ const QuizSchema = mongoose.Schema({
   quizTitle: {
     type: String,
     required: true,
-  },
-  // createdAt: {
-  //     type: Date,
-  //     required:true,
-  //     default: Date.now
-  // },
-  // updatedAt: {
-  //     type: Date,
-  //     required:true,
-  //     default: Date.now
-  // },
-  //How do you include update date and timestamp in schema or MongoDB?
+  }
 });
 
 //line below will automatically generate createdAt and updatedAt fields

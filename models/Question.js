@@ -8,6 +8,7 @@ const QuestionSchema = mongoose.Schema({
   quizId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "quizzes",
+    required: true,
   },
   questionText: {
     type: String,
@@ -22,21 +23,7 @@ const QuestionSchema = mongoose.Schema({
   correctAnswer: {
     type: String,
     required: true,
-  },
-  // createdAt: {
-  //     type: Date,
-  //     required:true,
-  //     default: Date.now
-  // },
-  // updatedAt: {
-  //     type: Date,
-  //     required:true,
-  //     default: Date.now
-  // },
-  //timestamps: {
-  //   createdAt: true,
-  //   updatedAt: false
-  // },
+  }
 });
 
 //line below will automatically generate createdAt and updatedAt fields
