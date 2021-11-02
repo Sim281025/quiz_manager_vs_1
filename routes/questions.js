@@ -16,15 +16,30 @@ const { ObjectId } = Types;
 //@desc         Get questions only for selected quiz
 //@access       Private
 
-//conditional rendering for roles
+//conditional  roles
 //@role basic all questions
 //@role viewer and admin questions and answers
-router.get("/:quizId", auth, async (req, res) => {
+router.get("/:quizId", auth, authRole(["admin", "basic", "viewer"]), async (req, res) => {
   //res.send('Questions Only');
   try {
     const quizId = req.params.quizId;
     const questions = await Question.find({ quizId: ObjectId(quizId) }); // finds questions related to the quizId
-    res.json(questions); //returns the questions
+  
+    //console.log(req.user.role)
+    const role = req.user.role;
+
+    if (role.includes("admin") || role.includes("viewer") ) {
+        console.log(questions)
+        res.json(questions);
+    } else if (role === "basic"){
+        questionsOnly=[];
+        questionsOnly = questions.map(question => question.questionText);
+        res.json(questionsOnly);
+    } else {
+        res.json({ msg: 'Your role has not been recognised. Contact database administrator' })
+    }
+
+    //res.json(questions); //returns the questions
   } catch (err) {
     console.error(err.message);
     res.status(500).send(" Server error");

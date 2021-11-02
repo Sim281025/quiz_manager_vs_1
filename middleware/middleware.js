@@ -20,13 +20,25 @@ const auth = (req, res, next) => {
     }
 }
 
-const authRole = (role) => {
+const authRole = (roles = []) => {
+    // roles param can be a single role string (e.g. Role.User or 'User') 
+    // or an array of roles (e.g. [Role.Admin, Role.User] or ['Admin', 'User'])
+    if (typeof roles === 'string') {
+        roles = [roles];
+    }
+
     return  (req, res, next) => {
-        //  const userRole = req.body.role
-        //  if (!role.includes(userRole)) {
-         if (req.user.role !== role) {
-         console.log(req.user)
-    return res.status(401).json({ msg: 'You are not authorised to have access to this page' })
+        //const userRole = req.body.role
+
+        // const userRole = req.user.role
+        // if (!role.includes(userRole)) {  
+
+         //if (req.user.role !== role) {
+        
+         ////user's role is not authorized
+        if (roles.length && !roles.includes(req.user.role)) {    
+            console.log(req.user)
+            return res.status(401).json({ msg: 'You are not authorised to have access to this page' })
          }
 
          next()
