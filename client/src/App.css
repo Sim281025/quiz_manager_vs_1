@@ -2,15 +2,38 @@
 
 /* Global Styles */
 :root {
-  --primary-color: #003699;
+  /*--primary-color: #003699;*/
+  --primary-color: #8e44ad;
   --dark-color: #333333;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
   --success-color: #28a745;
   --dark-grey-color: #454545;
-  --mild-color: #669933;
+  --mild-color: #f4d03f;
   --dark-red-color: #922b21;
+
+  --darker-green-color: #239b56;
+  --navy-color: #154360;
+  --yellow-color: #f4d03f;
+  --light-gray-color: #ecf0f1;
+  --darker-gray-color: #bfc9ca;
+  --light-blue-color: #5dade2;
+  --lighter-green-color: #58d68d;
 }
+
+.fa-check-circle {
+  color: #239b56;
+}
+
+/*
+darker-green: #239B56;
+navy-blue: #154360;
+yellow: #F4D03F;
+light-gray: #ECF0F1;
+darker-gray: #BFC9CA;
+light-blue: #5DADE2;
+lighter-green: #58D68D; 
+dark-purple: #8E44AD */ /* primary-color    for navbar*/
 
 * {
   box-sizing: border-box;
@@ -45,10 +68,18 @@ img {
 
 /* Utilities */
 .container {
-  max-width: 1100px;
+  /*max-width: 1100px;*/
+  max-width: 70%;
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
+}
+
+/*Page margins*/
+.page {
+  //background-color: red;
+  margin-top: 5%;
+  margin-bottom: 3%;
 }
 
 /* Text Styles*/
@@ -98,6 +129,39 @@ img {
   padding: 1rem;
   border: #ccc 1px dotted;
   margin: 0.7rem 0;
+  border-radius: 8px;
+}
+
+.card2 {
+  margin: auto;
+  padding: 15%;
+  border-radius: 8px;
+  font-size: 1rem;
+  /*border: 1px black dotted;*/
+  cursor: pointer;
+  transition: opacity 0.2s ease-in;
+  outline: none;
+}
+
+.card2:hover {
+  opacity: 0.7;
+}
+
+.card3:hover {
+  opacity: 0.7;
+}
+
+.card3 {
+  width: 40%;
+  height: 20%;
+  margin: auto;
+  padding: 4%;
+  border-radius: 8px;
+  font-size: 1rem;
+  /*border: 1px black dotted;*/
+  cursor: pointer;
+  transition: opacity 0.2s ease-in;
+  outline: none;
 }
 
 /* List */
@@ -165,7 +229,7 @@ img {
 .grid-2 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 2rem;
+  grid-gap: 1rem;
 }
 
 .grid-3 {
