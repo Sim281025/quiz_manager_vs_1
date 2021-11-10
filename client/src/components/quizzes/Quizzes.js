@@ -1,7 +1,7 @@
 import React, { Fragment, useContext  } from 'react';
 import QuizContext from '../../context/quiz/quizContext';
 import QuizItem from './QuizItem';
-//pull in quiz from the state and loop through them with map and create a list and out put the list in the QuizItem 
+//pull in quiz from the state and iterate through them with map and create a list and out put the list in the QuizItem 
 
 const Quizzes = () => {
     const quizContext = useContext(QuizContext);

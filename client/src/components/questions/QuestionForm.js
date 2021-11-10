@@ -1,102 +1,96 @@
 import React, { useState, useContext } from 'react';
 import QuestionContext from '../../context/question/questionContext';
 
+
 //Conditional rendering. The form does not display if user role is basic or viewer.
 //I need userId to access the role.
 
 const QuestionForm = () => {
-    const questionContext = useContext(QuestionContext); //we need the function addQuestion in QuestionState. useContext to get access
+    const questionContext = useContext(QuestionContext);
+
+    const [question, current] = questionContext;
 
     const [question, setQuestion] = useState({
        // _id,
        // quizId,
         questionText: '',
-        answerOption1: '',
-        answerOption2: '',
-        answerOption3: '',
-        answerOption4: '',
+        answerOptions: [],
         correctAnswer: ''
     });
 
-    //map through answerOptions array and change key for each value to answerOption[indexNumber starting from 1]: value
-    //add this function to destructure below
-   // const { questionText, answerOptions, correctAnswer } = question;
-    const { questionText, answerOption1, answerOption2, answerOption3, answerOption4, correctAnswer } = question;
-    
+    const { id, quizId, questionText, answerOptions, correctAnswer } = question; 
 
-    const onChange = e => setQuestion({ ...question, [e.target.name]: e.target.value });
-    
-
+    //destructure answerOptions array to display as list
+    const [answerOptions1, answerOptions2, answerOptions3, answerOptions4 ] = question.answerOptions;
+  
+    const onChange = e => setQuestion({...question, [e.target.name]: e.target.value});
+   
     const onSubmit = e => {
         e.preventDefault();
-        questionContext.addQuestion(question);  //addQuestion() function is in the questionState
-        setQuestion({               //form returns to initial empty state after data is submitted
+        questionContext.addQuestion(question); //gets the addQuestion function from QuestionState.js
+        setQuestion({                           //returns the form to initial state
             questionText: '',
-            answerOption1: '',
-            answerOption2: '',
-            answerOption3: '',
-            answerOption4: '',
+            answerOptions: [], // addQuestion funtion only works if this is here
+            answerOptions1: '', //answerOptions1-4 do not get added
+            answerOptions2: '', 
+            answerOptions3: '', 
+            answerOptions4: '',
             correctAnswer: ''
-        });
+        })
     }
+
+    console.log("**************** question ",question)
+    console.log("**************** question.answerOptions ",question.answerOptions)
 
 
     return (
         <form onSubmit={onSubmit}>
-            <h2 className='text-primary'>Add Question</h2>
-            
-            <label htmlFor='questionText'>
-                <span className='text-primary'>Question</span>
-            <input
-            type='text'          
-            name='questionText'
-            value={questionText} 
-            onChange={onChange}
+            <h2 className="text-primary"> Add Question</h2>
+            <input type=
+                "text"
+                placeholder="question"
+                name="questionText"
+                value={questionText} 
+                onChange={onChange}
             />
-            </label>
-
-            <label htmlFor='answerOptions'> {/*This needs to be corrected gather all and put in an array? */}
-            <span className='text-primary'>Answers Options</span>
-            <input
-            type='text'           
-            name='answerOption1'
-            value={answerOption1} 
-            onChange={onChange}
+            <input type=
+                "text"
+                placeholder="Option 1"
+                name="answerOptions1"
+                value={answerOptions1} 
+                onChange={onChange}
             />
-            <input
-            type='text'
-            
-            name='answerOption2'
-            value={answerOption2} 
-            onChange={onChange}
+            <input type=
+                "text"
+                placeholder="Option 2"
+                name="answerOptions2"
+                value={answerOptions2} 
+                onChange={onChange}
             />
-            <input
-            type='text'
-            
-            name='answerOption3'
-            value={answerOption3} 
-            onChange={onChange}
+            <input type=
+                "text"
+                placeholder="Option 3"
+                name="answerOptions3"
+                value={answerOptions3} 
+                onChange={onChange}
             />
-            <input
-            type='text'
-            
-            name='answerOption4'
-            value={answerOption4} 
-            onChange={onChange}
+            <input type=
+                "text"
+                placeholder="Option 4"
+                name="answerOptions4"
+                value={answerOptions4} 
+                onChange={onChange}
             />
-            </label>
-            <label className='correctAnswer'>
-            <span className='text-primary'>Correct Answer</span>   
-            <input
-            type='text'
-            name='correctAnswer'
-            value={correctAnswer} 
-            onChange={onChange}
+            <input type=
+                "text"
+                placeholder="correct answer"
+                name="correctAnswer"
+                value={correctAnswer} 
+                onChange={onChange}
             />
-            </label>
-            <div type='submit' value='Add Question' className='btn btn-primary btn-block text-center' >
-                Add Question
-            </div> 
+            <div>
+                <input type="submit" value="Add Question" className="btn btn-primary btn-block"/>
+            </div>
             
         </form>
     )

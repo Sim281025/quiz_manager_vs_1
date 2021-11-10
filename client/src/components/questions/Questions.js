@@ -1,6 +1,8 @@
 import  { Fragment, useContext } from 'react';
 import QuestionContext from '../../context/question/questionContext';
 import QuestionItem from './QuestionItem';
+import QuizContext from '../../context/quiz/quizContext';
+
 
 import React from 'react'
 
@@ -9,8 +11,14 @@ import React from 'react'
 
 const Questions = () => {
     const questionContext = useContext(QuestionContext);
+    const quizContext = useContext(QuizContext);
+
 
     const { questions } = questionContext;
+    const { quizzes } = quizContext;
+
+
+    //console.log('*************questions', questions);
 
     return (
         <Fragment>
