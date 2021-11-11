@@ -22,6 +22,11 @@ export default (state, action) => {
                 ...state,  //current array
                 questions: state.questions.filter(question => question.id !== action.payload)  //will return all questions that are not the current question id. action.payload = questionId to be deleted
             };
+         case UPDATE_QUESTION:
+            return {
+                ...state,  //current array
+                questions: state.questions.map(question => question.id === action.payload.id ? action.payload : question)  //will return all questions that are not the current question id. action.payload = questionId to be deleted
+            };  
         case SET_CURRENT:
             return {
                 ...state,

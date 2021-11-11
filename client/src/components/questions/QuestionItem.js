@@ -6,6 +6,15 @@ import QuestionContext from '../../context/question/questionContext';
 
 
 const QuestionItem = ({ question }) => {
+    // const authContext = useContext(authContext);
+    //const { user } = authContext;
+
+    // if(user.role === 'admin'){
+    //     display form
+    // } else {
+    //     display: none
+    // }
+
     const questionContext = useContext(QuestionContext);
     const { deleteQuestion, setCurrent, clearCurrent } = questionContext;
 

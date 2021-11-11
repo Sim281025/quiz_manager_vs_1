@@ -1,5 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { Fragment, useState, useContext, useEffect } from 'react';
 import QuestionContext from '../../context/question/questionContext';
+//import AuthContext from '../../context/auth/authContext';
 
 
 //Conditional rendering. The form does not display if user role is basic or viewer.
@@ -7,8 +8,31 @@ import QuestionContext from '../../context/question/questionContext';
 
 const QuestionForm = () => {
     const questionContext = useContext(QuestionContext);
+    // const authContext = useContext(authContext);
+    //const { user } = authContext;
 
-    const [question, current] = questionContext;
+    // if(user.role === 'admin'){
+    //     display form
+    // } else {
+    //     display: none
+    // }
+
+
+    const { addQuestion, current, clearCurrent, updateQuestion } = questionContext
+
+    //const [question, current] = questionContext;
+
+    useEffect(() => {
+        if(current !== null){
+            setQuestion(current);
+        } else {
+           setQuestion({
+            uestionText: '',
+            answerOptions: [],
+            correctAnswer: ''
+           }) 
+        }
+    }, [questionContext, current]); //2nd parameter -  useEffect function only excecutes if the questionContext or the current is changed 
 
     const [question, setQuestion] = useState({
        // _id,
@@ -27,7 +51,14 @@ const QuestionForm = () => {
    
     const onSubmit = e => {
         e.preventDefault();
-        questionContext.addQuestion(question); //gets the addQuestion function from QuestionState.js
+        if(current === null) {  //if current state is empty
+            // setQuestion({...question, 
+            //     question.answerOptions1
+            // });
+            addQuestion(question); //gets the addQuestion function from QuestionState.js //questionContext destructured
+        } else {
+            updateQuestion(question);
+        }
         setQuestion({                           //returns the form to initial state
             questionText: '',
             answerOptions: [], // addQuestion funtion only works if this is here
@@ -39,13 +70,18 @@ const QuestionForm = () => {
         })
     }
 
-    console.log("**************** question ",question)
-    console.log("**************** question.answerOptions ",question.answerOptions)
+    const clearAll = () => {
+        clearCurrent();
+    }
+
+    //console.log("**************** question ",question)
+    //console.log("**************** question.answerOptions ",question.answerOptions)
 
 
     return (
+        <Fragment>
         <form onSubmit={onSubmit}>
-            <h2 className="text-primary"> Add Question</h2>
+            <h2 className="text-primary"> {current ? 'Edit Question' : 'Add Question'}</h2>
             <input type=
                 "text"
                 placeholder="question"
@@ -89,10 +125,13 @@ const QuestionForm = () => {
                 onChange={onChange}
             />
             <div>
-                <input type="submit" value="Add Question" className="btn btn-primary btn-block"/>
+                <input type="submit" value={current ? 'Edit Question' : 'Add Question'} className="btn btn-primary btn-block"/>
             </div>
-            
+            {current && <div>
+              <button className="btn btn-light btn-block" onClick={clearAll}>Clear</button>  
+            </div>}
         </form>
+        </Fragment>
     )
 }
 

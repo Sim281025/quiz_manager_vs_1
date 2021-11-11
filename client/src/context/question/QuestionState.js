@@ -10,7 +10,7 @@ import {
   //UPDATE_QUIZ_TITLE
     SET_CURRENT, 
     CLEAR_CURRENT, 
-  //  UPDATE_QUESTION,
+    UPDATE_QUESTION,
     //FILTER_QUESTIONS,
     //CLEAR_FILTER_QUESTION,
   //  QUESTION_ERROR 
@@ -86,6 +86,9 @@ const QuestionState = props => {  //initially empty then makes a request to back
     }
 
     //Update Question
+    const updateQuestion = question => {  //current is a state that holds data from question. Used in edit
+      dispatch({ type: UPDATE_QUESTION, payload: question });
+    }
 
     //Filter Questions
 
@@ -99,7 +102,8 @@ const QuestionState = props => {  //initially empty then makes a request to back
           addQuestion,
           deleteQuestion,
           setCurrent,
-          clearCurrent
+          clearCurrent,
+          updateQuestion
          }} >
          { props.children }
        </QuestionContext.Provider>
